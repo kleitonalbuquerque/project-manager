@@ -3,7 +3,7 @@
     <h1>Projects</h1>
     <ul class="list-group">
       <li class="list-group-item" v-for="project in projects" :key="project.id">
-        {{ project.name }} - Clients: {{ project.clientIds.join(', ') }}
+        {{ project.name }}
         <button class="btn btn-danger btn-sm float-right" @click="confirmDelete(project.id)">Delete</button>
         <button class="btn btn-secondary btn-sm float-right mr-2" @click="editProject(project.id)">Edit</button>
       </li>

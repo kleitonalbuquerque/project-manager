@@ -1,57 +1,42 @@
 {
   "clients": [
     {
-      "id": 1,
       "name": "Client 1",
       "projectIds": [
         1,
         2
-      ]
+      ],
+      "id": "1"
     },
     {
-      "id": 2,
       "name": "Client 2",
       "projectIds": [
         2,
         3
-      ]
-    },
-    {
-      "id": "35b2",
-      "name": "Client 3",
-      "projectIds": [
-        1,
-        2,
-        3
-      ]
+      ],
+      "id": "2"
     }
   ],
   "projects": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Project 1"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Project 2"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Project 3"
     }
   ],
   "activities": [
     {
-      "id": "493b",
-      "description": "Atividade 1",
+      "id": "680f",
+      "description": "Activity 1",
       "clientId": 1,
       "projectId": 1
-    },
-    {
-      "description": "Atividade 2",
-      "clientId": 2,
-      "projectId": 3,
-      "id": "0771"
     }
   ]
 }
