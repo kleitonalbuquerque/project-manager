@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+      <nav class="navbar navbar-light bg-light">
+      <router-link to="/" class="navbar-brand p-2">Home</router-link>
+    </nav>
       <h1>Add Activity</h1>
       <form @submit.prevent="addActivity">
         <div class="form-group">

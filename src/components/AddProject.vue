@@ -1,14 +1,13 @@
 <template>
     <div class="container">
+      <nav class="navbar navbar-light bg-light">
+      <router-link to="/" class="navbar-brand p-2">Home</router-link>
+    </nav>
       <h1>Add Project</h1>
       <form @submit.prevent="addProject">
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name" v-model="name" required>
-        </div>
-        <div class="form-group">
-          <label for="clientId">Client ID</label>
-          <input type="number" class="form-control" id="clientId" v-model="clientId" required>
         </div>
         <button type="submit" class="btn btn-primary">Add</button>
       </form>
@@ -21,11 +20,10 @@
   import { useRouter } from 'vue-router';
   
   const name = ref('');
-  const clientId = ref('');
   const router = useRouter();
   
   const addProject = async () => {
-    await createProject({ name: name.value, clientId: clientId.value });
+    await createProject({ name: name.value });
     router.push('/projects');
   };
   </script>

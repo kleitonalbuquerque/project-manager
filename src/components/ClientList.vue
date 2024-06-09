@@ -1,14 +1,36 @@
 <template>
   <div class="container">
-    <!-- TODO criar uma tabela -->
+    <nav class="navbar navbar-light bg-light">
+      <router-link to="/" class="navbar-brand p-2">Home</router-link>
+    </nav>
     <h1>Clients</h1>
-    <ul class="list-group">
-      <li class="list-group-item" v-for="client in clients" :key="client.id">
-         {{ client.name }} | <span v-for="project in client.projects" :key="project">{{ project.name }} | </span>
-        <button class="btn btn-danger btn-sm float-right" @click="confirmDelete(client.id)">Delete</button>
-        <button class="btn btn-secondary btn-sm float-right mr-2" @click="editClient(client.id)">Edit</button>
-      </li>
-    </ul>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Client Name</th>
+          <th>Projects</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="client in clients" :key="client.id">
+          <td>{{ client.name }}</td>
+          <td>
+            <span v-for="project in client.projects" :key="project.id">
+              {{ project.name }}<span v-if="!isLastProject(client, project)">, </span>
+            </span>
+          </td>
+          <td class="d-flex">
+            <div class="col">
+              <button class="btn btn-secondary btn-sm" @click="editClient(client.id)">Edit</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-danger btn-sm" @click="confirmDelete(client.id)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <router-link to="/add-client" class="btn btn-primary mt-3">Add Client</router-link>
   </div>
 </template>
@@ -39,5 +61,9 @@ const removeClient = async (id) => {
 
 const editClient = (id) => {
   router.push(`/edit-client/${id}`);
+};
+
+const isLastProject = (client, project) => {
+  return client.projects[client.projects.length - 1].id === project.id;
 };
 </script>

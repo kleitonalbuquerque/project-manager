@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <nav class="navbar navbar-light bg-light">
+      <router-link to="/" class="navbar-brand p-2">Home</router-link>
+    </nav>
     <h1>Edit Client</h1>
     <form @submit.prevent="handleUpdateClient">
       <div class="form-group">

@@ -1,13 +1,30 @@
 <template>
   <div class="container">
+    <nav class="navbar navbar-light bg-light">
+      <router-link to="/" class="navbar-brand p-2">Home</router-link>
+    </nav>
     <h1>Projects</h1>
-    <ul class="list-group">
-      <li class="list-group-item" v-for="project in projects" :key="project.id">
-        {{ project.name }}
-        <button class="btn btn-danger btn-sm float-right" @click="confirmDelete(project.id)">Delete</button>
-        <button class="btn btn-secondary btn-sm float-right mr-2" @click="editProject(project.id)">Edit</button>
-      </li>
-    </ul>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="project in projects" :key="project.id">
+          <td>{{ project.name }}</td>
+          <td class="d-flex">
+            <div class="col">
+              <button class="btn btn-secondary btn-sm" @click="editProject(project.id)">Edit</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-danger btn-sm" @click="confirmDelete(project.id)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <router-link to="/add-project" class="btn btn-primary mt-3">Add Project</router-link>
   </div>
 </template>
