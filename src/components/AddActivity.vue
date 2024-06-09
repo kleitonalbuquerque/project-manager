@@ -13,13 +13,11 @@
             <option v-for="client in clients" :key="client.id" :value="client.id">{{ client.name }}</option>
           </select>
         </div>
-        {{ projects }}
         <div class="form-group" v-if="projects.length > 0">
           <label for="projectId">Project</label>
-          {{ projects }}
           <select class="form-control" id="projectId" v-model="selectedProjectId" required>
             <option value="">Select a Project</option>
-            <option v-for="project in projects" :key="project.id" :value="project">{{ project }}</option>
+            <option v-for="project in projects" :key="project.id" :value="project.id">{{ project.name }}</option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary" :disabled="!selectedClientId || !selectedProjectId">Add</button>
@@ -31,7 +29,6 @@
   import { ref, onMounted, watch } from 'vue';
   import { createActivity } from '../services/ActivityService';
   import { getClients } from '../services/ClientService';
-  import { getProjects } from '../services/ProjectService';
   import { useRouter } from 'vue-router';
   
   const description = ref('');
@@ -47,27 +44,19 @@
     console.log('Clientes carregados:', clients.value);
   });
   
-  watch(selectedClientId, async (newClientId) => {
+  watch(selectedClientId, (newClientId) => {
     if (newClientId) {
-      const clientId = parseInt(newClientId, 10);
+      const clientId = newClientId;
       console.log('selectedClientId.value (converted to int):', clientId);
-  
-      const response = await getProjects();
-      console.log('Projects from API:', response.data);
   
       const client = clients.value.find(client => {
         console.log('Comparing client.id:', client.id, 'with selectedClientId:', clientId);
-        return parseInt(client.id, 10) === clientId;
+        return client.id === clientId;
       });
   
       if (client) {
         console.log('Selected Client:', client);
-        // projects.value = response.data.filter(project => {
-        //   console.log('Checking if project.id:', project.id, 'is in client.projectIds:', client.projectIds);
-        //   return client.projectIds.includes(project.id);
-        // });
-        // projects.value = client;
-        projects.value = client.projectIds;
+        projects.value = client.projects;
         console.log('Filtered Projects:', projects.value);
       } else {
         console.error('Client not found');
@@ -81,8 +70,8 @@
   const addActivity = async () => {
     await createActivity({
       description: description.value,
-      clientId: parseInt(selectedClientId.value, 10),
-      projectId: parseInt(selectedProjectId.value, 10),
+      clientId: selectedClientId.value,
+      projectId: selectedProjectId.value
     });
     router.push('/activities');
   };

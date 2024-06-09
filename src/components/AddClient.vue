@@ -9,7 +9,7 @@
         <div class="form-group">
           <label>Projects</label>
           <div v-for="project in projects" :key="project.id" class="form-check">
-            <input type="checkbox" class="form-check-input" :id="`project-${project.id}`" :value="project.id" v-model="selectedProjects">
+            <input type="checkbox" class="form-check-input" :id="`project-${project.id}`" :value="project" v-model="selectedProjects">
             <label class="form-check-label" :for="`project-${project.id}`">{{ project.name }}</label>
           </div>
         </div>
@@ -35,7 +35,7 @@
   });
   
   const addClient = async () => {
-    await createClient({ name: name.value, projectIds: selectedProjects.value });
+    await createClient({ name: name.value, projects: selectedProjects.value });
     router.push('/clients');
   };
   </script>

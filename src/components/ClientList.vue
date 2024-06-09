@@ -1,9 +1,10 @@
 <template>
   <div class="container">
+    <!-- TODO criar uma tabela -->
     <h1>Clients</h1>
     <ul class="list-group">
       <li class="list-group-item" v-for="client in clients" :key="client.id">
-        {{ client.name }}
+         {{ client.name }} | <span v-for="project in client.projects" :key="project">{{ project.name }} | </span>
         <button class="btn btn-danger btn-sm float-right" @click="confirmDelete(client.id)">Delete</button>
         <button class="btn btn-secondary btn-sm float-right mr-2" @click="editClient(client.id)">Edit</button>
       </li>

@@ -1,20 +1,50 @@
 {
   "clients": [
     {
+      "id": "1",
       "name": "Client 1",
-      "projectIds": [
-        1,
-        2
-      ],
-      "id": "1"
+      "projects": [
+        {
+          "id": 1,
+          "name": "Project 1"
+        },
+        {
+          "id": 2,
+          "name": "Project 2"
+        }
+      ]
     },
     {
+      "id": "2",
       "name": "Client 2",
-      "projectIds": [
-        2,
-        3
-      ],
-      "id": "2"
+      "projects": [
+        {
+          "id": 2,
+          "name": "Project 2"
+        },
+        {
+          "id": 3,
+          "name": "Project 3"
+        }
+      ]
+    },
+    {
+      "id": "070d",
+      "name": "Client 3",
+      "projects": [
+        {
+          "id": "1",
+          "name": "Project 1"
+        },
+        {
+          "id": "2",
+          "name": "Project 2"
+        },
+        {
+          "id": "3",
+          "name": "Project 3"
+        }
+      ]
     }
   ],
   "projects": [
@@ -33,15 +63,21 @@
   ],
   "activities": [
     {
-      "id": "680f",
+      "id": "f832",
+      "description": "Activity 3",
+      "clientId": "070d",
+      "projectId": "3"
+    },
+    {
+      "id": "855a",
       "description": "Activity 1",
-      "clientId": 1,
+      "clientId": "1",
       "projectId": 1
     },
     {
-      "id": "965d",
+      "id": "fb6e",
       "description": "Activity 2",
-      "clientId": 2,
+      "clientId": "2",
       "projectId": 2
     }
   ]
