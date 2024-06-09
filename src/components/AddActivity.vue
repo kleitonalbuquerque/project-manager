@@ -1,4 +1,4 @@
-)<template>
+<template>
     <div class="container">
       <h1>Add Activity</h1>
       <form @submit.prevent="addActivity">
@@ -13,11 +13,13 @@
             <option v-for="client in clients" :key="client.id" :value="client.id">{{ client.name }}</option>
           </select>
         </div>
+        {{ projects }}
         <div class="form-group" v-if="projects.length > 0">
           <label for="projectId">Project</label>
+          {{ projects }}
           <select class="form-control" id="projectId" v-model="selectedProjectId" required>
             <option value="">Select a Project</option>
-            <option v-for="project in projects" :key="project.id" :value="project.id">{{ project.name }}</option>
+            <option v-for="project in projects" :key="project.id" :value="project">{{ project }}</option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary" :disabled="!selectedClientId || !selectedProjectId">Add</button>
@@ -48,26 +50,24 @@
   watch(selectedClientId, async (newClientId) => {
     if (newClientId) {
       const clientId = parseInt(newClientId, 10);
-      console.log('selectedClientId.value (converted to int):', clientId, typeof clientId);
+      console.log('selectedClientId.value (converted to int):', clientId);
   
       const response = await getProjects();
       console.log('Projects from API:', response.data);
   
       const client = clients.value.find(client => {
-        const batata = parseInt(client.id, 10);
-        console.log('Comparing client.id:', parseInt(client.id), 'with selectedClientId:', clientId);
-        return batata === clientId;
+        console.log('Comparing client.id:', client.id, 'with selectedClientId:', clientId);
+        return parseInt(client.id, 10) === clientId;
       });
-
-      console.log('Client:', client.id)
   
       if (client) {
         console.log('Selected Client:', client);
-        console.log('Selected ClientId:', client.id);
-        console.log('response', response.data);
-        console.log('projects.value', projects.value)
-        // projects.value = response.data.filter(project => client.projectIds.includes(project.id));
-        projects.value = response.data.filter(project => client.id.includes(project.id));
+        // projects.value = response.data.filter(project => {
+        //   console.log('Checking if project.id:', project.id, 'is in client.projectIds:', client.projectIds);
+        //   return client.projectIds.includes(project.id);
+        // });
+        // projects.value = client;
+        projects.value = client.projectIds;
         console.log('Filtered Projects:', projects.value);
       } else {
         console.error('Client not found');

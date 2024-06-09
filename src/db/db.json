@@ -37,6 +37,12 @@
       "description": "Activity 1",
       "clientId": 1,
       "projectId": 1
+    },
+    {
+      "id": "965d",
+      "description": "Activity 2",
+      "clientId": 2,
+      "projectId": 2
     }
   ]
 }
