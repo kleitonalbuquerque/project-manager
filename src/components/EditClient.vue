@@ -62,9 +62,7 @@ onMounted(async () => {
   const projectResponse = await getProjects();
   
   const client = clientResponse.data;
-  console.log('client', client);
   
-  // Certifique-se de que client.projects é um array antes de usar map
   const projectClientIds = Array.isArray(client.projects) ? client.projects.map(project => project.id) : [];
   
   name.value = client.name;

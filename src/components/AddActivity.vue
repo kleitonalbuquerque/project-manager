@@ -44,23 +44,18 @@
   onMounted(async () => {
     const response = await getClients();
     clients.value = response.data;
-    console.log('Clientes carregados:', clients.value);
   });
   
   watch(selectedClientId, (newClientId) => {
     if (newClientId) {
       const clientId = newClientId;
-      console.log('selectedClientId.value (converted to int):', clientId);
   
       const client = clients.value.find(client => {
-        console.log('Comparing client.id:', client.id, 'with selectedClientId:', clientId);
         return client.id === clientId;
       });
   
       if (client) {
-        console.log('Selected Client:', client);
         projects.value = client.projects;
-        console.log('Filtered Projects:', projects.value);
       } else {
         console.error('Client not found');
         projects.value = [];

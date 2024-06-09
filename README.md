@@ -35,3 +35,10 @@ npm run build
 ```sh
 json-server --watch db.json
 ```
+
+### Run unit test
+
+
+```sh
+npm run test
+```
