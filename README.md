@@ -27,3 +27,11 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Run back-end
+
+- Open folder db in /src/db and run
+
+```sh
+json-server --watch db.json
+```
