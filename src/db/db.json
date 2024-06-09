@@ -1,18 +1,14 @@
 {
   "clients": [
     {
-      "id": "1",
       "name": "Client 1",
       "projects": [
         {
-          "id": 1,
+          "id": "1",
           "name": "Project 1"
-        },
-        {
-          "id": 2,
-          "name": "Project 2"
         }
-      ]
+      ],
+      "id": "1"
     },
     {
       "id": "2",
@@ -29,7 +25,6 @@
       ]
     },
     {
-      "id": "070d",
       "name": "Client 3",
       "projects": [
         {
@@ -37,14 +32,31 @@
           "name": "Project 1"
         },
         {
-          "id": "2",
-          "name": "Project 2"
-        },
-        {
           "id": "3",
           "name": "Project 3"
         }
-      ]
+      ],
+      "id": "070d"
+    },
+    {
+      "name": "Client 4",
+      "projects": [
+        {
+          "id": "2",
+          "name": "Project 2"
+        }
+      ],
+      "id": "1930"
+    },
+    {
+      "name": "Client 5",
+      "projects": [
+        {
+          "id": "2",
+          "name": "Project 2"
+        }
+      ],
+      "id": "127d"
     }
   ],
   "projects": [
@@ -75,10 +87,16 @@
       "id": "855a"
     },
     {
-      "id": "fb6e",
       "description": "Activity 2",
       "clientId": "2",
-      "projectId": 2
+      "projectId": 2,
+      "id": "fb6e"
+    },
+    {
+      "id": "5833",
+      "description": "Activity 4",
+      "clientId": "1930",
+      "projectId": "2"
     }
   ]
 }
